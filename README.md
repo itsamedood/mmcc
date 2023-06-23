@@ -9,5 +9,6 @@
 > ![example0](assets/example0.png)
 
 ## Wanna use it?
+> Install [cx-Freeze](https://pypi.org/project/cx-Freeze/): `pip install cx-Freeze`
 > Just run `make` and add the path to the generated `bin` folder to `$PATH`.
 > Now run `mmcc` and enjoy knowing what commands you use ~~too much~~ the most!
