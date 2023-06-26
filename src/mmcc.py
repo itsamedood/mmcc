@@ -1,11 +1,13 @@
-from platform import system
 from os import getenv
 from os.path import expanduser
+from out import throw
+from platform import system
 from sys import exit
 
 
 class MMCC:
-    def __init__(self) -> None:
+    def __init__(self, _flags: dict[str, int | bool]) -> None:
+        self.FLAGS = _flags
         OS = system()
         shell: str | None
 
@@ -14,12 +16,12 @@ class MMCC:
             case "Darwin" | "Linux": shell = getenv("SHELL")
             case _: shell = None
 
-        if shell is None: print("OS not supported."); exit(1)
-
-        match shell.split('/')[-1]:
-            case "zsh": self.SHELL, self.HISTFILE = "zsh", expanduser("~/.zsh_history")
-            case "bash": self.SHELL, self.HISTFILE = "bash", expanduser("~/.bash_history")
-            case _: print("Shell not supported."); exit(1)
+        if shell is None: throw(1, "OS not supported.")
+        else:
+            match shell.split('/')[-1]:
+                case "zsh": self.SHELL, self.HISTFILE = "zsh", expanduser("~/.zsh_history")
+                case "bash": self.SHELL, self.HISTFILE = "bash", expanduser("~/.bash_history")
+                case _: throw(1, "unknown shell.")
 
 
     def read_through_shell_history(self) -> dict[str, int]:
@@ -78,7 +80,14 @@ class MMCC:
         sorted_occurrences = dict(sorted(_occurrence_dict.items(), key=lambda item: item[1], reverse=True))  # Sorts keys by their values in numerical order.
         keys = list(sorted_occurrences.keys())
 
+        if "debug" in self.FLAGS: print(sorted_occurrences)
+
+        llen = 3
+        if "list" in self.FLAGS:
+            llen = self.FLAGS["list"]
+            if not (llen > 0 and llen <= len(_occurrence_dict)): throw(1, "invalid length, you only have %s commands run." %len(_occurrence_dict))
+
         print("Most common commands according to .%s_history:" %self.SHELL)
-        for i in range(0, 3):
+        for i in range(0, llen):
             cmd, count = keys[i], sorted_occurrences[keys[i]]
             print(f"{i+1}) {cmd} - {count}")

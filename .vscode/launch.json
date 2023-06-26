@@ -8,6 +8,9 @@
             "pythonArgs": [
                 "-B",
             ],
+			"args": [
+				"-debug",
+			],
             "console": "integratedTerminal",
             "justMyCode": true
         }
