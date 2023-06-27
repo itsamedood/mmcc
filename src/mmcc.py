@@ -2,7 +2,6 @@ from os import getenv
 from os.path import expanduser
 from out import throw
 from platform import system
-from sys import exit
 
 
 class MMCC:
@@ -12,7 +11,11 @@ class MMCC:
         shell: str | None
 
         match OS:
-            case "Windows": shell = None  # Can't be bothered lol
+            case "Windows":
+                shell = getenv("SHELL")
+                if shell is None: throw(1, "SHELL variable not set. Are you using bash?")
+                else: shell = shell.split('\\')[-1].removesuffix(".exe")
+
             case "Darwin" | "Linux": shell = getenv("SHELL")
             case _: shell = None
 

@@ -9,6 +9,11 @@
 > ![example0](assets/example0.png)
 
 ## Wanna use it?
-> Install [cx-Freeze](https://pypi.org/project/cx-Freeze/): `pip install cx-Freeze`
-> Just run `make` and add the path to the generated `bin` folder to `$PATH`.
+> 1) Install [cx-Freeze](https://pypi.org/project/cx-Freeze/): `pip install cx-Freeze`
+> 2) Clone this repository.
+> 3) Run `make` and add the path to the generated `bin` folder to `$PATH` (`~/path-to/mmcc/bin`).
+>
 > Now run `mmcc` and enjoy knowing what commands you use ~~too much~~ the most!
+
+## Note:
+> This program works best on Linux and MacOS. Although it *will* work on Windows, from my testing, it's a little bit iffy. But, it works.
