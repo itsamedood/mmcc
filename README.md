@@ -1,5 +1,5 @@
 <center>
-	<img src="assets/mmcclogo.png"><hr>
+	<img src="assets/mmcclogo.png" align="center"><hr>
 </center><br>
 
 
