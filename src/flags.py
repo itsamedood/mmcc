@@ -31,9 +31,10 @@ class Flags:
                         print(*[
                             "Usage: mmcc [flags]\n",
                             "Flags:\n",
-                            "  -list=<int> ~ Change the length of the list of top commands used. Default is 3.\n",
-                            "  -help       ~ Displays this help menu.\n",
-                            "  -debug      ~ Shows some boring debug stuff.\n",
+                            "  -list=<int>   ~ Change the length of the list of top commands used. Default is 3.\n",
+                            "  -find=<query> ~ Shows list of commands used in query string in order of usage. Seperate commands by a `,`; `make,clear,...`.\n",
+                            "  -help         ~ Displays this help menu.\n",
+                            "  -debug        ~ Shows some boring debug stuff.\n",
                         ])
                         exit(0)
 
