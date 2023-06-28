@@ -2,10 +2,11 @@ from os import getenv
 from os.path import expanduser
 from out import throw
 from platform import system
+from sys import exit
 
 
 class MMCC:
-    def __init__(self, _flags: dict[str, int | bool]) -> None:
+    def __init__(self, _flags: dict[str, int | bool | list[str]]) -> None:
         self.FLAGS = _flags
         OS = system()
         shell: str | None
@@ -86,7 +87,19 @@ class MMCC:
         if "debug" in self.FLAGS: print(sorted_occurrences)
 
         llen = 3
-        if "list" in self.FLAGS:
+        if "find" in self.FLAGS:
+            filtered_dict: dict[str, int] = {}
+
+            for o in sorted_occurrences:
+               if o in self.FLAGS["find"]: filtered_dict[o] = sorted_occurrences[o]
+
+            if "debug" in self.FLAGS: print(filtered_dict)
+
+            print("Most common commands according to .%s_history, based off your query:" %self.SHELL)
+            for i, f in enumerate(filtered_dict): print(f"{i+1}) {f} - {filtered_dict[f]}")
+            exit(0)
+
+        elif "list" in self.FLAGS:
             llen = self.FLAGS["list"]
             if not (llen > 0 and llen <= len(_occurrence_dict)): throw(1, "invalid length, you only have %s commands run." %len(_occurrence_dict))
 
