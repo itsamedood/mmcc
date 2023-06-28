@@ -1,7 +1,6 @@
 <center>
-	<h1>MMCC</h1>
-	<p>My Most Common Commands</p>
-</center>
+	<img src="assets/mmcclogo.png"><hr>
+</center><br>
 
 
 ## What does this do?
