@@ -1,10 +1,11 @@
-MAIN=src/main.py
-FLAGS=-B
-TARGET_DIR=bin
-TARGET_NAME=mmcc
+SRC=src/*.c
+BIN=bin
+EXEC=mmcc
+CCOMPILER=gcc
+CFLAGS=-o $(BIN)/$(EXEC) $(SRC)
 
 compile:
 	@echo "Compiling..."
-	mkdir -p $(TARGET_DIR)
-	cxfreeze --target-dir $(TARGET_DIR) --target-name $(TARGET_NAME) $(MAIN)
+	mkdir -p $(BIN)
+	$(CCOMPILER) $(CFLAGS)
 	@echo "Done."

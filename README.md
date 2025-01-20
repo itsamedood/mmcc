@@ -6,13 +6,13 @@
 ## What does this do?
 > MMCC just shows you your top 3 most used commands in your shell (determined by `$SHELL`) and how many times they've been used.
 > ![example0](assets/example0.png)
+> **NOTE**: Only [bash](https://www.gnu.org/software/bash/), [zsh](https://www.zsh.org/), and [fish](https://fishshell.com/) are supported.
 
 ## Wanna use it?
-> 1) Install [cx-Freeze](https://pypi.org/project/cx-Freeze/): `pip install cx-Freeze`
-> 2) Clone this repository.
-> 3) Run `make` and add the path to the generated `bin` folder to `$PATH` (`~/path-to/mmcc/bin`).
+> 1) Clone the repo.
+> 2) Run `make`.
 >
 > Now run `mmcc` and enjoy knowing what commands you use ~~too much~~ the most!
 
 ## Note:
-> This program works best on Linux and MacOS. Although it *will* work on Windows, from my testing, it's a little bit iffy. But, it works.
+> I am still learning C, I am by no means an expert. I wrote this on Ubuntu Cinnamon, so I don't know if it'd run on MacOS, and I'm sure it won't run on Windows.
